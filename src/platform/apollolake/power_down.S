@@ -144,6 +144,13 @@ _PD_RELEASE_VNN:
     // We cannot wait for VNN to drop since it can be held by something else
     // and never drop
 
+	// wait a little prior to sending IPC
+	// 400MHz / ((1024 * 64) * 2 loop instructions) = ~320us
+	movi temp_reg0, (1024 * 64)
+loop_pre:
+	addi temp_reg0, temp_reg0, -1
+	bnez temp_reg0, loop_pre
+
 	//TODO: add sending IPC reply from L1$ locked code
 
 _PD_SEND_IPC:
