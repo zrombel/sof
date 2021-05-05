@@ -178,7 +178,7 @@ static int update_stream_sample_rate(struct comp_dev *dev)
 	API_CALL(cd, XA_API_CMD_SET_CONFIG_PARAM, sample_rate_id, &stream->rate, ret);
 	if (LIB_IS_FATAL_ERROR(ret)) {
 		comp_err(dev, "update_stream_sample_params(): failed to set sample rate.");
-		return ret;
+		return 0;
 	}
 
 	return 0;
@@ -206,7 +206,7 @@ static int update_stream_sample_width(struct comp_dev *dev)
 	API_CALL(cd, XA_API_CMD_SET_CONFIG_PARAM, sample_width_id, &sample_width, ret);
 	if (LIB_IS_FATAL_ERROR(ret)) {
 		comp_err(dev, "update_stream_sample_width(): failed to set sample width.");
-		return ret;
+		return 0;
 	}
 
 	return 0;
@@ -233,7 +233,7 @@ static int update_stream_channels(struct comp_dev *dev)
 	API_CALL(cd, XA_API_CMD_SET_CONFIG_PARAM, sample_channels_id, &stream->channels, ret);
 	if (LIB_IS_FATAL_ERROR(ret)) {
 		comp_err(dev, "update_stream_channels(): failed to set channels");
-		return ret;
+		return 0;
 	}
 
 	return 0;
